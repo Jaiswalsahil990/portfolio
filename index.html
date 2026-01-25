@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahil Jaiswal | Data Science Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --dark-color: #1e293b;
+            --light-color: #f8fafc;
+            --gray-color: #64748b;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            left: 0;
+            bottom: -5px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 100px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+
+        .hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--gray-color);
+        }
+
+        .tagline {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-item i {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--primary-color);
+            padding: 10px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid var(--primary-color);
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Certificate Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            background-color: rgba(0, 0, 0, 0.9);
+            transform: rotate(90deg);
+        }
+
+        .certificate-name {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .achievement-card {
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-10px) scale(1.03);
+        }
+
+        /* Section Common Styles */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background-color: var(--primary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title p {
+            color: var(--gray-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Education & Internship Cards */
+        .timeline-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .timeline-title {
+            font-size: 1.5rem;
+            color: var(--dark-color);
+        }
+
+        .timeline-date {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .timeline-org {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .timeline-desc {
+            color: var(--gray-color);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .skill-category h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-category h3 i {
+            font-size: 1.3rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-item {
+            background-color: #e0f2fe;
+            color: var(--primary-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-img {
+            height: 200px;
+            background-color: #dbeafe;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .project-content p {
+            color: var(--gray-color);
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .project-links {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Achievements */
+        .achievements-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .achievement-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            width: 250px;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .achievement-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .achievement-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .view-certificate {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .achievement-card:hover .view-certificate {
+            opacity: 1;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-about, .footer-contact, .footer-links {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-about h3, .footer-contact h3, .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .declaration {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-style: italic;
+            color: #cbd5e1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+            }
+            
+            .hero-text, .hero-image {
+                text-align: center;
+            }
+            
+            .contact-info {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                transition: var(--transition);
+                box-shadow: var(--shadow);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 70px 0;
+            }
+
+            .project-links {
+                flex-direction: column;
+            }
+
+            .modal-content {
+                max-width: 95%;
+                max-height: 95%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .timeline-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .achievements-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .achievement-card {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Certificate Modal -->
+    <div id="certificateModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <img id="certificateImage" class="modal-img" src="" alt="Certificate">
+            <div id="certificateName" class="certificate-name"></div>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Sahil<span>Jaiswal</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#internships">Internships</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="tagline">Data Science & Machine Learning Professional</div>
+                    <h1>Hi, I'm <span>Sahil Jaiswal</span></h1>
+                    <p>A passionate Data Science professional with expertise in Machine Learning, AI, and Data Analytics. Currently pursuing my BCA at Usha Martin University with hands-on experience in real-world projects and team leadership.</p>
+                    <a href="#projects" class="btn">View My Projects</a>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>jaiswalsahil283@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>990-541-9782</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Jamshedpur, Jharkhand</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Sahil Jaiswal">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <div class="section-title">
+                <h2>Education</h2>
+                <p>My academic journey and qualifications in the field of Computer Science</p>
+            </div>
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <h3 class="timeline-title">Bachelor of Computer Applications (BCA)</h3>
+                    </div>
+                    <div class="timeline-org">Usha Martin University</div>
+                    <p class="timeline-desc">Currently pursuing my degree with a focus on Data Science, Machine Learning, and Software Development.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <h3 class="timeline-title">Intermediate (12th)</h3>
+                    </div>
+                    <div class="timeline-org">Govind Vidyalaya Tamuliya</div>
+                    <p class="timeline-desc">Completed with focus on Science and Mathematics.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <h3 class="timeline-title">Matriculation (10th)</h3>
+                    </div>
+                    <div class="timeline-org">Govind Vidyalaya Tamuliya</div>
+                    <p class="timeline-desc">Completed with distinction.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Internships Section -->
+    <section id="internships" style="background-color: #f0f9ff;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Internships</h2>
+                <p>Hands-on industry experience in Data Science and Machine Learning</p>
+            </div>
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <h3 class="timeline-title">Team Leader - Data Science/Machine Learning</h3>
+                        <div class="timeline-date">Nov 2025 - Feb 2026</div>
+                    </div>
+                    <div class="timeline-org">Infotech Solution</div>
+                    <p class="timeline-desc">Led a team of interns, coordinated task assignments, and guided team members in data collection, cleaning, and preprocessing techniques. Acted as a bridge between mentors and team members for smooth communication and improved leadership skills.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <h3 class="timeline-title">Data Science / Machine Learning Intern</h3>
+                        <div class="timeline-date">2024 - 2025</div>
+                    </div>
+                    <div class="timeline-org">Lambentix</div>
+                    <p class="timeline-desc">Worked on real-time projects under industry guidance, learning Python, Machine Learning, and data handling. Assisted in model building, testing, and analysis while understanding industry workflows and best practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Projects</h2>
+                <p>A showcase of my technical projects in Data Science and Machine Learning</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Real Estate Investment Advisor</h3>
+                        <p>Predicting Property Profitability & Future Value using ML algorithms to assist investors in making informed decisions.</p>
+                        <div class="project-links">
+                            <a href="https://real-state-price-prediction-ad0f.onrender.com" target="_blank" class="btn">View Live Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Agentic AI-Based Travel Planning Assistant</h3>
+                        <p>Using LangChain to create an intelligent travel planning system that personalizes itineraries based on user preferences.</p>
+                        <div class="project-links">
+                            <a href="https://agentic-ai-travel-planner-langchain.onrender.com" target="_blank" class="btn">View Live Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Tesla Stock Price Prediction</h3>
+                        <p>Machine Learning model to predict Tesla stock prices using historical data and financial indicators.</p>
+                        <div class="project-links">
+                            <a href="https://tesla-working-final-project.onrender.com" target="_blank" class="btn">View Live Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-drone"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Drone and Bird Detection System</h3>
+                        <p>Computer vision system for detecting and classifying drones and birds in real-time video feeds.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn-outline">Code Repository</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" style="background-color: #f0f9ff;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Skills & Expertise</h2>
+                <p>Technical proficiencies and tools I work with</p>
+            </div>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Python</span>
+                        <span class="skill-item">C Language</span>
+                        <span class="skill-item">Java</span>
+                        <span class="skill-item">SQL</span>
+                        <span class="skill-item">JavaScript</span>
+                        <span class="skill-item">PHP</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-brain"></i> Data Science & ML</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">NumPy</span>
+                        <span class="skill-item">Pandas</span>
+                        <span class="skill-item">Scikit-learn</span>
+                        <span class="skill-item">TensorFlow</span>
+                        <span class="skill-item">Matplotlib</span>
+                        <span class="skill-item">Seaborn</span>
+                        <span class="skill-item">Deep Learning</span>
+                        <span class="skill-item">LLM</span>
+                        <span class="skill-item">NLP</span>
+                        <span class="skill-item">DSA</span>
+                        <span class="skill-item">AI</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-laptop-code"></i> Web Development</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">HTML</span>
+                        <span class="skill-item">CSS</span>
+                        <span class="skill-item">JavaScript</span>
+                        <span class="skill-item">PHP</span>
+                        <span class="skill-item">Node.js</span>
+                        <span class="skill-item">MongoDB</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Tools & Platforms</h3>
+                    <div class="skill-list">
+                        <span class="skill-item">Git & GitHub</span>
+                        <span class="skill-item">Jupyter Notebook</span>
+                        <span class="skill-item">VS Code</span>
+                        <span class="skill-item">Deployment (Render)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements">
+        <div class="container">
+            <div class="section-title">
+                <h2>Achievements & Certifications</h2>
+                <p>Click on any certificate to view it in full size</p>
+            </div>
+            <div class="achievements-container">
+                <div class="achievement-card" data-certificate="oracle-certificate" data-name="Data Science Professional - ORACLE">
+                    <div class="achievement-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Data Science Professional</h3>
+                    <p>ORACLE (1025484750C125DSOCP)</p>
+                    <div class="view-certificate" title="View Certificate">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="achievement-card" data-certificate="codewithharry-certificate" data-name="Data Science & ML - Code with Harry">
+                    <div class="achievement-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Data Science & ML</h3>
+                    <p>Code with Harry</p>
+                    <div class="view-certificate" title="View Certificate">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="achievement-card" data-certificate="tataforage-certificate" data-name="Data Analytics - Tata Forage">
+                    <div class="achievement-icon">
+                        <i class="fas fa-analytics"></i>
+                    </div>
+                    <h3>Data Analytics</h3>
+                    <p>Tata Forage</p>
+                    <div class="view-certificate" title="View Certificate">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="achievement-card" data-certificate="aws-certificate" data-name="Machine Learning Essentials - AWS">
+                    <div class="achievement-icon">
+                        <i class="fab fa-aws"></i>
+                    </div>
+                    <h3>Machine Learning Essentials</h3>
+                    <p>AWS</p>
+                    <div class="view-certificate" title="View Certificate">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+                <div class="achievement-card" data-certificate="ibm-certificate" data-name="Data Science - IBM">
+                    <div class="achievement-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Data Science</h3>
+                    <p>IBM</p>
+                    <div class="view-certificate" title="View Certificate">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 30px; color: var(--gray-color); font-size: 0.9rem;">
+                <i class="fas fa-info-circle"></i> Click on any certificate card to view it in full size
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Sahil Jaiswal</h3>
+                    <p>Data Science and Machine Learning professional with expertise in Python, AI, and Data Analytics. Passionate about solving real-world problems through data-driven solutions.</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/sahil-jaiswal-814656206?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="mailto:jaiswalsahil283@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="https://github.com/Jaiswalsahil990"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Old Purulia Road, Mango, Jamshedpur, Jharkhand</p>
+                    <p><i class="fas fa-envelope"></i> jaiswalsahil283@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> 990-541-9782</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#education">Education</a></li>
+                        <li><a href="#internships">Internships</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#achievements">Achievements</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="declaration">
+                <p>I hereby declare that the above information shared is true and correct to the best of my knowledge.</p>
+                <p style="margin-top: 10px;">&copy; 2024 Sahil Jaiswal. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Certificate data - Replace these URLs with your actual certificate images
+        const certificates = {
+            'oracle-certificate': {
+                image: 'Screenshot 2026-01-25 212619.png',
+                name: 'Data Science Professional - ORACLE'
+            },
+            'codewithharry-certificate': {
+                image: 'Screenshot 2026-01-25 205613.png',
+                name: 'Data Science & ML - Code with Harry'
+            },
+            'tataforage-certificate': {
+                image: 'Screenshot 2026-01-25 205840.png',
+                name: 'Data Analytics - Tata Forage'
+            },
+            'aws-certificate': {
+                image: 'Screenshot 2026-01-25 205916.png',
+                name: 'Machine Learning Essentials - AWS'
+            },
+            'ibm-certificate': {
+                image: 'Screenshot 2026-01-25 205740.png',
+                name: 'Data Science - IBM'
+            }
+        };
+
+        // Modal elements
+        const modal = document.getElementById('certificateModal');
+        const modalImage = document.getElementById('certificateImage');
+        const certificateName = document.getElementById('certificateName');
+        const closeModal = document.querySelector('.modal-close');
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add shadow to header on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Certificate Modal functionality
+        document.querySelectorAll('.achievement-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const certId = this.getAttribute('data-certificate');
+                const certName = this.getAttribute('data-name');
+                
+                if (certificates[certId]) {
+                    modalImage.src = certificates[certId].image;
+                    certificateName.textContent = certificates[certId].name;
+                    modal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+                }
+            });
+        });
+
+        // Close modal when clicking X button
+        closeModal.addEventListener('click', function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close modal when clicking outside the image
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.style.display === 'flex') {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Instructions for adding your actual certificates
+        console.log("To add your actual certificates:");
+        console.log("1. Replace the image URLs in the 'certificates' object with your actual certificate image URLs");
+        console.log("2. Upload your certificate images to a cloud storage service (like Google Drive, Dropbox, or Imgur)");
+        console.log("3. Get the direct image URLs and replace the placeholder URLs");
+        console.log("4. You can also use GitHub to host your images");
+    </script>
+</body>
+</html>
